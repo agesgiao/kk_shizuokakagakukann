@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MindAR 16 Targets</title>
+
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      overflow: hidden;
+      height: 100%;
+      background-color: white;
+    }
+
+    a-scene {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: black;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .overlay video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    #overlay-video-success,
+    #overlay-video-fail {
+      transform: rotate(180deg);
+    }
+
+    #countdown {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(180deg);
+      font-size: 6em;
+      font-weight: bold;
+      color: red;
+      z-index: 9999;
+      display: none;
+      pointer-events: none;
+      text-shadow: 2px 2px 5px white;
+    }
+  </style>
+</head>
+<body>
+  <a-scene mindar-image="imageTargetSrc: ./targets5.mind; filterMinCF:0.0001; showStats: false; uiScanning: false;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights, alpha: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-assets>
+      <!-- 動画 kk1～kk13 を追加 -->
+      <video id="kk2" src="./kk2.mp4" loop muted playsinline crossorigin="anonymous"></video>
+      <video id="kk3" src="./kk3.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk4" src="./kk4.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk5" src="./kk5.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk6" src="./kk6.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk7" src="./kk7.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk8" src="./kk8.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk9" src="./kk9.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk10" src="./kk10.mp4" loop muted playsinline preload="auto"></video>
+      <video id="kk11" src="./kk11.mp4" loop muted playsinline preload="auto"></video>
+
+      <!-- 音声ファイルはそのまま -->
+      <audio id="voice1" src="./voice1.mp3" preload="auto"></audio>
+      <audio id="voice2" src="./voice2.mp3" preload="auto"></audio>
+      <audio id="voice3" src="./voice3.mp3" preload="auto"></audio>
+      <audio id="voice4" src="./voice4.mp3" preload="auto"></audio>
+      <audio id="voice5" src="./voice5.mp3" preload="auto"></audio>
+      <audio id="voice6" src="./voice6.mp3" preload="auto"></audio>
+      <audio id="voice7" src="./voice7.mp3" preload="auto"></audio>
+      <audio id="voice8" src="./voice8.mp3" preload="auto"></audio>
+	  <audio id="voice9" src="./voice9.mp3" preload="auto"></audio>
+	  <audio id="voice10" src="./voice10.mp3" preload="auto"></audio>
+	  <audio id="voice11" src="./voice11.mp3" preload="auto"></audio>
+	  <audio id="voice12" src="./voice12.mp3" preload="auto"></audio>
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+    <!-- ターゲット1〜16 -->
+    <a-entity id="target1" mindar-image-target="targetIndex: 0"></a-entity>
+
+    <a-entity id="target2" mindar-image-target="targetIndex: 1">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk2"></a-plane>
+    </a-entity>
+
+    <a-entity id="target3" mindar-image-target="targetIndex: 2">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk3"></a-plane>
+    </a-entity>
+
+    <a-entity id="target4" mindar-image-target="targetIndex: 3">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk4"></a-plane>
+    </a-entity>
+
+    <a-entity id="target5" mindar-image-target="targetIndex: 4">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk5"></a-plane>
+    </a-entity>
+
+    <a-entity id="target6" mindar-image-target="targetIndex: 5">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk6"></a-plane>
+    </a-entity>
+
+    <a-entity id="target7" mindar-image-target="targetIndex: 6">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk7"></a-plane>
+    </a-entity>
+
+    <a-entity id="target8" mindar-image-target="targetIndex: 7">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk8"></a-plane>
+    </a-entity>
+
+    <a-entity id="target9" mindar-image-target="targetIndex: 8">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk9"></a-plane>
+    </a-entity>
+
+    <a-entity id="target10" mindar-image-target="targetIndex: 9">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk10"></a-plane>
+    </a-entity>
+
+    <a-entity id="target11" mindar-image-target="targetIndex: 10">
+      <a-plane width="2" height="1.12" position="0 0 0" material="shader: flat; src: #kk11"></a-plane>
+    </a-entity>
+
+    <a-entity id="target12" mindar-image-target="targetIndex: 12"></a-entity>
+    <a-entity id="target13" mindar-image-target="targetIndex: 13"></a-entity>
+
+  </a-scene>
+
+  <!-- オーバーレイ動画 -->
+  <div id="overlay-success" class="overlay">
+    <video id="overlay-video-success" src="./kk62.mp4" playsinline></video>
+  </div>
+
+  <div id="overlay-fail" class="overlay">
+    <video id="overlay-video-fail" src="./kk61.mp4" playsinline></video>
+  </div>
+
+  <div id="countdown">30</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
